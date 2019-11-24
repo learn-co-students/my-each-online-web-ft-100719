@@ -51,27 +51,23 @@ describe "my_each" do
   it "returned array contains the same elements as the original collection" do
     tas = ['arel', 'jon', 'logan', 'spencer']
 
-    # run the method
+    
     expect(my_each(tas) do |ta|
-    # Do nothing on yield
-    # check if it returns correct values
+    
     end).to contain_exactly('arel', 'jon', 'logan', 'spencer')
   end
 
   it "does not modify the original collection" do
     tas = ['arel', 'jon', 'logan', 'spencer']
-    # array may be modified by the iteration function so
-    # we cannot use it for verifying the results
-    # therefore we create a new copy using the clone method
+   
     tas_original = tas.clone
 
-    # run the method
+   
     my_each(tas) do |ta|
       ta = "testing 1 2 3"
     end
 
-    # is verifying if the array we passed to method
-    # has not been modified
+    
     expect(tas).to eq(tas_original)
   end
 
